@@ -101,4 +101,50 @@ public class Auction
             return null;
         }
     }
+    
+    public void close()
+    {
+        for (Lot elemento : lots) {
+            System.out.println(elemento.toString());
+            Bid pujaMasAlta = elemento.getHighestBid();
+            if (pujaMasAlta == null){
+                System.out.println("No hay pujas actuales");
+            }
+            else{
+                System.out.println ("Persona que mas ha pujado " + pujaMasAlta.getBidder().getName());
+                System.out.println("Su puja es: " + pujaMasAlta.getValue());
+            }
+        }
+    }
+    
+    public ArrayList getUnsold()
+    {
+        ArrayList sinPujar = new ArrayList<Lot>();
+        for (Lot lot : lots){
+            if(lot.getHighestBid() == null){
+                sinPujar.add(lot);
+                
+            }
+        }
+        return sinPujar;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
